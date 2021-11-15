@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Accounts from './Accounts';
-import { Link, browserHistory } from 'react-router'
+import { Link } from "react-router-dom";
 
 class Header extends Component {
-  onBinClick(event) {
+  onBinClick = (event) => {
       event.preventDefault();
+      console.log("EVENT+> " + event);
       
       Meteor.call("bins.insert", (error, binId) => {
-        console.log(binId); // returns new bin id
-      browserHistory.push(`/bins/${binId}`); // navigate to the new bin page
+        console.log("BINID+> " + binId); // returns new bin id
+        // browserHistory.push(`/bins/${binId}`); // navigate to the new bin page
+        
+       this.location.push(`/bins/${binId}`);
       });
   }
   render() {
@@ -22,7 +25,7 @@ class Header extends Component {
             <Accounts />
           </li>
           <li>
-            <a href="#" onClick={this.onBinClick.bind(this)}>
+            <a href="#" onClick={this.onBinClick}>
               Create Bin
             </a>
           </li>
@@ -31,5 +34,6 @@ class Header extends Component {
     );
   }
 }
+// onClick={() => history.push('/')}
 
 export default Header;
