@@ -25,7 +25,7 @@ const routes = (
   <Router history={history}>
     <Route path="/" component={App}>
       <IndexRoute component={BinsList} />
-      <Route path="bins" component={BinsMain} />
+      <Route path="bins/:binId" component={BinsMain} />
     </Route>
   </Router>
 );
@@ -33,5 +33,3 @@ const routes = (
 Meteor.startup(() => {
   render(routes, document.getElementById("app"));
 });
-
-/*  { <App /> <Route path="/bins" component={BinsMain} /> }*/
