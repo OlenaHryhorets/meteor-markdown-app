@@ -1,10 +1,11 @@
-import React from 'react';
-import BinsList from './bins/BinsList';
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 
-export const App = () => (
-  <div>
-    <Header />
-    <BinsList />
-  </div>
-);
+export default (props) => {
+  return (
+    <div>
+      <Header />
+      {props.children}
+    </div>
+  );
+};
