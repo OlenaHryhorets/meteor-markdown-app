@@ -6,7 +6,9 @@ class Header extends Component {
   onBinClick(event) {
       event.preventDefault();
       
-      Meteor.call('bins.insert')
+      Meteor.call("bins.insert", (error, bin) => {
+        console.log(bin);
+      });
   }
   render() {
     return (
